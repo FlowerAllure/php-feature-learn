@@ -2,6 +2,12 @@
 
 namespace FlowerAllure\PHPFeatureLearn\Test;
 
+/**
+ * 箭头函数
+ * 1、自动捕捉变量的值，即是在嵌套的情况下
+ * 2、来自箭头外的值不能修改箭头内部的值
+ */
+
 class ArrowTest extends TestCase
 {
     /**
@@ -51,27 +57,10 @@ class ArrowTest extends TestCase
         $fn1 = fn() => $x++;
         $fn1();
         var_export($x);
-    }
 
-    public function testFeature5()
-    {
-        $x = 1;
-        $fn1 = fn(&$x) => ($x = 2);
-        $fn1($x);
-        var_export($x);
-    }
-
-    public function testFeature6()
-    {
-        $a = 1;
-        $b = &$a;
-        $a = 3;
-        var_export($b);
-
-        $fn1 = fn&($x) => $x;
-        $fn2 = $fn1;
-
-        var_export($fn2(11));
-        var_export($a);
+        $y = 1;
+        $fn1 = fn() => ++$y;
+        $fn1();
+        var_export($y);
     }
 }
